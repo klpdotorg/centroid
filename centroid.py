@@ -55,7 +55,8 @@ def main():
           if centroids:
               found = found+1
               centroid = list(centroids[0])
-              query = "INSERT INTO boundary_coord VALUES ("+str(centroid[0])+", '"+centroid[1]+"', ST_GeomFromText('"+centroid[2]+"',"+"4326))"
+              # query = "INSERT INTO boundary_coord VALUES ("+str(centroid[0])+", '"+centroid[1]+"', ST_GeomFromText('"+centroid[2]+"',"+"4326))"
+              query = "UPDATE boundary_coord SET coord ="+"ST_GeomFromText('"+centroid[2]+"',"+"4326) WHERE id_bndry ="+ str(centroid[0])
               operations.write(query+';\n')
           else:
             missed.write(str(list(d)[0])+", "+list(d)[1]+"\n")
